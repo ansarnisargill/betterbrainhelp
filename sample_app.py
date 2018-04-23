@@ -1,26 +1,11 @@
 ﻿import os
-import tweepy
 
 from bottle import route, template, redirect, static_file, error, run
 
 
 @route('/home')
 def show_home():
-    
-    consumer_key= HrMuYU40iEONQ0xlJ7fpypUwq
-    consumer_secret=OxARlBCFIuTJ0KKfSIAXOpdmdPK3jxNajFFt3nAlzVg8adkCjs
-    access_token=2850234482-RqeBMI7cYehIjUtZIgkEULVu4WQNFvmwpfTeimb
-    access_token_secret=9RFgcihh6DmSWIdH2fMJSweYDCnnZelqwhMTytBuEPX22
-
-
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
-
-    api = tweepy.API(auth)
-
-    public_tweets = api.home_timeline()
-    return public_tweets
-
+    return template('home')
 
 
 @route('/')
@@ -38,7 +23,6 @@ def make_request():
 @route('/css/<filename>')
 def send_css(filename):
     return static_file(filename, root='static/css')
-
 
 
 @error(404)
