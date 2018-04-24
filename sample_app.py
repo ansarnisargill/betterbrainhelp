@@ -1,23 +1,32 @@
 ﻿import os
-
-from bottle import route, template, redirect, static_file, error, run
+import tweepy
+from bottle import route, template, redirect, static_file, error, run, get,post,request
 
 
 @route('/home')
 def show_home():
-    return template('home')
+    redirect('/survey')
 
+@get('/survey')
+def surveyAccumulation():
+	
+		
+	return template('survey')
+
+@post('/survey')
+def surveyAccumulationPost():
+	return "Data Has Been Submitted"
 
 @route('/')
 def handle_root_url():
-    redirect('/home')
+    redirect('/survey')
 
 
-@route('/profile')
-def make_request():
+#@route('/profile')
+#def make_request():
     # make an API request here
-    profile_data = {'name': 'Marcel Hellkamp', 'role': 'Developer'}
-    return template('details', data=profile_data)
+ #   profile_data = {'name': 'Marcel Hellkamp', 'role': 'Developer'}
+  #  return template('details', data=profile_data)
 
 
 @route('/css/<filename>')
