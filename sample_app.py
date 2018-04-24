@@ -9,8 +9,6 @@ def show_home():
 
 @get('/survey')
 def surveyAccumulation():
-	
-		
 	return template('survey')
 
 @post('/survey')
